@@ -1,49 +1,78 @@
-# console-log-level
+# simple-console-log-level
 
-A dead simple logger. Will log to STDOUT or STDERR depending on the
-chosen log level. It uses `console.info`, `console.warn` and
+[![NPM version][npm-image]][npm-url] [![Build status][build-image]][build-url] [![changelog][changelog-image]][changelog-url] [![license][license-image]][license-url]
+
+[npm-image]: https://img.shields.io/npm/v/simple-console-log-level.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/simple-console-log-level
+
+[build-image]: https://travis-ci.org/ufologist/simple-console-log-level.svg?branch=master
+[build-url]: https://travis-ci.org/ufologist/simple-console-log-level
+
+[license-image]: https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square
+[license-url]: https://github.com/ufologist/simple-console-log-level/blob/master/LICENSE
+
+[changelog-image]: https://img.shields.io/badge/CHANGE-LOG-blue.svg?style=flat-square
+[changelog-url]: https://github.com/ufologist/simple-console-log-level/blob/master/CHANGELOG.md
+
+**A dead simple logger with log level support, no dependencies and support all environments:**
+- Web
+- Node
+- Weapp(微信小程序) - 做这个主要是因为需要在微信小程序里面用, 找了一圈发现没有合适的库(必须没有任何依赖)
+- ...
+
+Will log to STDOUT or STDERR depending on the
+chosen log level. It uses `console.trace`, `console.log`, `console.info`, `console.warn` and
 `console.error` and hence supports the same API.
 
-Log levels supported: trace, debug, info, warn, error and fatal.
-
-[![Build status](https://travis-ci.org/watson/console-log-level.svg?branch=master)](https://travis-ci.org/watson/console-log-level)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+Log levels supported: trace, log, info, warn and error.
 
 ## Installation
 
 ```
-npm install console-log-level
+npm install simple-console-log-level --save
 ```
 
 ## Example usage
 
-```js
-var log = require('console-log-level')({ level: 'info' })
+```javascript
+var Logger = require('simple-console-log-level');
 
-log.trace('a') // will not do anything
-log.debug('b') // will not do anything
-log.info('c')  // will output 'c\n' on STDOUT
-log.warn('d')  // will output 'd\n' on STDERR
-log.error('e') // will output 'e\n' on STDERR
-log.fatal('f') // will output 'f\n' on STDERR
+var logger = new Logger({
+    level: Logger.LEVEL_LOG
+});
+
+logger.trace('trace'); // will not do anything
+logger.log('log');     // will not do anything
+logger.info('info');   // will output 'info'
+logger.warn('warn');   // will output 'warn'
+logger.error('error'); // will output 'error'
 ```
 
 ## Options
 
 Configure the logger by passing an options object:
 
-```js
-var log = require('console-log-level')({
-  prefix: function (level) {
-    return new Date().toISOString()
-  },
-  level: 'info'
-})
+```javascript
+var Logger = require('simple-console-log-level');
+
+var logger = new Logger({
+    level: Logger.LEVEL_LOG,
+    prefix: function() {
+        return new Date().toISOString() + ' [' + this.options.level + ']';
+    }
+});
 ```
 
 ### level
 
-A `string` to specify the log level. Defaults to `info`.
+A `string` to specify the log level. Defaults to `Logger.LEVEL_LOG`.
+
+All support levels(more higher)
+- `Logger.LEVEL_TRACE`
+- `Logger.LEVEL_LOG`
+- `Logger.LEVEL_INFO`
+- `Logger.LEVEL_WARN`
+- `Logger.LEVEL_ERROR`
 
 ### prefix
 
@@ -53,10 +82,6 @@ This must be a `string` or a `function` that returns a string.
 Will get the level of the currently logged message as the first
 argument.
 
-### stderr
+## Thanks
 
-A `boolean` to log everything to stderr. Defauls to `false`.
-
-## License
-
-MIT
+* [watson/console-log-level](https://github.com/watson/console-log-level)

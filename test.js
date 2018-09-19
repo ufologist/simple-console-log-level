@@ -1,5 +1,7 @@
 'use strict'
 
+console.warn('需要重写测试用例');
+
 var test = require('tape')
 var Logger = require('./')
 

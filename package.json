@@ -1,14 +1,14 @@
 {
-  "name": "console-log-level",
-  "version": "1.4.0",
-  "description": "The most simple logger imaginable",
+  "name": "simple-console-log-level",
+  "version": "1.0.0",
+  "description": "A dead simple logger with log level support",
   "main": "index.js",
   "scripts": {
-    "test": "standard && tape test.js"
+    "test": "tape test.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/watson/console-log-level.git"
+    "url": "https://github.com/ufologist/simple-console-log-level.git"
   },
   "keywords": [
     "log",
@@ -19,19 +19,14 @@
     "stdout",
     "stderr"
   ],
-  "author": "Thomas Watson Steen <w@tson.dk>",
+  "author": "ufologist",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/watson/console-log-level/issues"
+    "url": "https://github.com/ufologist/simple-console-log-level/issues"
   },
-  "homepage": "https://github.com/watson/console-log-level",
+  "homepage": "https://github.com/ufologist/simple-console-log-level",
   "dependencies": {},
   "devDependencies": {
-    "standard": "^8.6.0",
     "tape": "^4.6.3"
-  },
-  "coordinates": [
-    55.6810439,
-    12.5643924
-  ]
+  }
 }
