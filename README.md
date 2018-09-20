@@ -17,7 +17,7 @@
 **A dead simple logger with log level support, no dependencies and support all environments:**
 - Web
 - Node
-- Weapp(微信小程序) - 做这个主要是因为需要在微信小程序里面用, 找了一圈发现没有合适的库(必须没有任何依赖)
+- [Weapp(微信小程序)](https://mp.weixin.qq.com/cgi-bin/wx) - 做这个主要是因为需要在微信小程序里面用, 找了一圈发现没有合适的库(必须没有任何依赖)
 - ...
 
 Will log to STDOUT or STDERR depending on the
@@ -42,7 +42,7 @@ var logger = new Logger({
 });
 
 logger.trace('trace'); // will not do anything
-logger.log('log');     // will not do anything
+logger.log('log');     // will output 'log'
 logger.info('info');   // will output 'info'
 logger.warn('warn');   // will output 'warn'
 logger.error('error'); // will output 'error'
@@ -67,12 +67,15 @@ var logger = new Logger({
 
 A `string` to specify the log level. Defaults to `Logger.LEVEL_LOG`.
 
-All support levels(more higher)
-- `Logger.LEVEL_TRACE`
+All support levels(more below is more higher level).
+- `Logger.LEVEL_TRACE` -- Weapp debug mode(调试模式) could not output(in vConsole) this level's logs
 - `Logger.LEVEL_LOG`
 - `Logger.LEVEL_INFO`
 - `Logger.LEVEL_WARN`
 - `Logger.LEVEL_ERROR`
+
+More higher than you setting level will output, more lower will not.
+Example: `level: Logger.LEVEL_INFO`, log levels below `Logger.LEVEL_INFO`(include itself) will output, log levels above `Logger.LEVEL_INFO` will not output.
 
 ### prefix
 

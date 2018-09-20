@@ -20,6 +20,7 @@
 function Logger(options) {
     this.options = options || {};
     this.options.level = this.options.level || Logger.LEVEL_LOG;
+    this.options.level = this.options.level.toLowerCase();
     this.options.prefix = this.options.prefix || '';
 };
 
