@@ -1,6 +1,6 @@
 {
   "name": "simple-console-log-level",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A dead simple logger with log level support",
   "main": "index.js",
   "scripts": {
